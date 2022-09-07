@@ -1,0 +1,79 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "bsleskov.android.apk"
+        minSdk 21
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+    implementation 'androidx.navigation:navigation-fragment:2.4.1'
+    implementation 'androidx.preference:preference:1.2.0'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation project(':haishinkit')
+    testImplementation 'junit:junit:4.13.2'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.8.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //http
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.4.0"
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
+    //RxJava
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
+
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.0-alpha03")
+    implementation("androidx.navigation:navigation-ui-ktx:2.5.0-alpha03")
+
+    //ExoPlayer
+    implementation 'com.google.android.exoplayer:exoplayer-rtsp:2.17.1'
+
+
+}
+
+repositories {
+    mavenCentral()
+    google()
+}
